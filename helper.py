@@ -6,7 +6,7 @@ from data import DataUser
 
 fake = Faker()
 payload = {
-    "email": f'{fake.first_name()}_{fake.last_name()}_7_{random.randint(100, 999)}@yandex.ru',
+    "email": f'{fake.first_name()}_76_{random.randint(100, 999)}@yandex.ru',
     "password": f'{random.randint(10000, 9999999999)}',
     "name": fake.name()
            }

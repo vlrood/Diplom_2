@@ -1,15 +1,15 @@
 import allure
 import helper
 from data import DataOrder, DataRequest
-from stellar_burgers_api import OrderApi
+from stellar_burgers_api import OrderApi, UserApi
 
 
 class TestCreateOrder:
     @allure.title('Проверка успешного создания заказа авторизованного пользователя')
     @allure.description('Отправка POST-запроса на создание заказа, проверка статуса и тела ответа')
     def test_create_order_with_authorization_create_and_delete_user_success(self, create_and_delete_user):
-        user = create_and_delete_user
-        token = user.json()['accessToken']
+        user = UserApi.create_user(create_and_delete_user)
+        token = user.json().get('accessToken')
         ingredients = helper.TestDataHelper.get_random_list_ingredients(3)
         order_response = OrderApi.create_order(ingredients, token)
 

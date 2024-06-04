@@ -7,7 +7,7 @@ class UserApi:
     @staticmethod
     @allure.step('Отправка POST-запроса на создание пользователя')
     def create_user(body):
-        return requests.post(f'{urls.BASE_URL}{urls.CREATE_USER_PATH}', json=body)
+        return requests.post(f'{urls.BASE_URL}{urls.CREATE_USER_PATH}', data=body)
 
     @staticmethod
     @allure.step('Отправка POST-запроса на авторизацию')
