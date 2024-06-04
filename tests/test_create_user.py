@@ -5,6 +5,16 @@ from stellar_burgers_api import UserApi
 
 
 class TestCreateUser:
+    @allure.title('Проверка успешного создания пользователя')
+    @allure.description('Отправка POST-запроса на создание пользователя, проверка статуса и тела ответа')
+    def test_create_user_success(self):
+        user_response = UserApi.create_user(helper.payload)
+        token = user_response.json()['accessToken']
+
+        assert user_response.status_code == 200 and user_response.json()['success'] is True
+
+        UserApi.delete_user(token)
+
 
     @allure.title('Проверка невозможности создания пользователя, который уже зарегистрирован;')
     @allure.description('Отправка двух POST-запросов на создание пользователя, проверка статуса и тела ответа')

@@ -1,7 +1,7 @@
 import allure
 from data import DataRequest
 from helper import TestDataHelper
-from stellar_burgers_api import OrderApi, UserApi
+from stellar_burgers_api import OrderApi
 
 
 class TestGetOrder:

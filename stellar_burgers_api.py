@@ -19,6 +19,11 @@ class UserApi:
     def change_user(token, body):
         return requests.patch(f'{urls.BASE_URL}{urls.CHANGE_USER_PATH}', json=body, headers={'Authorization': token})
 
+    @staticmethod
+    @allure.step('Отправка DELETE-запроса на удаление пользователя')
+    def delete_user(token):
+        requests.delete(f'{urls.BASE_URL}{urls.DELETE_USER}', headers={'Authorization': token})
+
 
 class OrderApi:
     @staticmethod
